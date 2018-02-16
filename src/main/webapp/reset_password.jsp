@@ -17,7 +17,7 @@
 
 <div class = "container">
     <div class="wrapper">
-        <form action="" method="post" name="Login_Form" class="form-signin">
+        <form action="/reset_password" method="post" name="Login_Form" class="form-signin">
             <h3 class="form-signin-heading">Форма сброса пароля</h3>
             <hr class="colorgraph"><br>
 

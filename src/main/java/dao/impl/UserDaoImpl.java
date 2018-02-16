@@ -68,7 +68,8 @@ public class UserDaoImpl implements UserDao {
         UserService userService = new UserServiceImpl();
         User user = new User();
         user.setEmail("ememe.com");
-        user.setPassword("114");
-        userService.save(user);
+        user.setId(27);
+        user.setPassword("55555");
+        userService.update(user);
     }
 }
