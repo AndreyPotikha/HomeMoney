@@ -55,7 +55,7 @@ public class RegistrationServlet extends HttpServlet {
 
             HttpSession session = req.getSession();
             session.setAttribute("userEmail", saveUser.getEmail());
-            session.setAttribute("userID", saveUser.getId());
+            session.setAttribute("userId", saveUser.getId());
 
             req.getRequestDispatcher("main_page.jsp").forward(req, resp);
 

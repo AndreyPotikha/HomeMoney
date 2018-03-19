@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -29,7 +30,9 @@ public class LoginServlet extends HttpServlet {
         for (User user : allUser) {
             if (user.getEmail().equals(email)) {
                 if (checkPasswordUtil.checkPassword(password, user.getPassword())) {
-                    req.setAttribute("id", user.getId());
+                    HttpSession session = req.getSession();
+                    session.setAttribute("userId", user.getId());
+                    session.setAttribute("userEmail", email);
                     req.getRequestDispatcher("main_page.jsp").forward(req, resp);
                     counterOfUser--;
                 }

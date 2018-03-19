@@ -2,9 +2,11 @@ package service.impl;
 
 import dao.UserDao;
 import dao.impl.UserDaoImpl;
+import model.Income;
 import model.User;
 import service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {

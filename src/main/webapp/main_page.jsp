@@ -9,10 +9,19 @@
 <html>
 <head>
     <title>Money</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
-zxczxbxzb
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  session="true" %>
+
+<%
+    long status = (long) session.getAttribute("userId");
+%>
+
+<%@include file="header/header.jsp"%>
 
 </body>
 </html>

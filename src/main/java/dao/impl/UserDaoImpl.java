@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.UserDao;
+import model.Income;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,6 +27,25 @@ public class UserDaoImpl implements UserDao {
             if (elem.getEmail().equals(user.getEmail())) {
                 return elem;
             }
+        }
+        return null;
+    }
+
+    public Income saveIncome(Income income) {
+        Session session = getSession();
+        Transaction transaction = null;
+        transaction = session.beginTransaction();
+        session.save(income);
+        transaction.commit();
+        session.close();
+        Session session2 = getSession();
+        Transaction transaction2 = null;
+        transaction2 = session2.beginTransaction();
+        List from_incomes = session2.createQuery("FROM incomes").list();
+        transaction.commit();
+        session.close();
+        for (Object elem : from_incomes) {
+            System.out.println(elem);
         }
         return null;
     }
@@ -65,11 +85,15 @@ public class UserDaoImpl implements UserDao {
 
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
+
+        UserDaoImpl userDao = new UserDaoImpl();
         User user = new User();
-        user.setEmail("ememe.com");
-        user.setId(27);
-        user.setPassword("55555");
-        userService.update(user);
+        user.setEmail("test3.com");
+        user.setPassword("3333");
+        Income income = new Income();
+        income.setMain_income("work3");
+        income.setAdditionalIncome("free3");
+        user.getIncomes().add(income);
+        userDao.save(user);
     }
 }
